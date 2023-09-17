@@ -5,11 +5,10 @@ import com.mizan.productservice.service.ExpenseServices;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
-@RequestMapping("/expense")
+@RequestMapping("/api/expense")
 public class ExpenseController {
     private final ExpenseServices expenseServices;
     public ExpenseController(ExpenseServices expenseServices) {
@@ -19,7 +18,7 @@ public class ExpenseController {
     @PostMapping
     public ResponseEntity addExpense(@RequestBody Expense expense){
         this.expenseServices.addExpense(expense);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.ok("successfully saved");
     }
     @PutMapping
     public ResponseEntity<Object> updateExpense(@RequestBody Expense expense){
